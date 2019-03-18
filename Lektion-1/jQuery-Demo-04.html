@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Demo 4</title>
+    <style>
+        .hot { color: hotpink; }
+    </style>
+</head>
+<body>
+    <h1>jQuery Demo 4</h1>
+    <h2>Chaining jQuery Methods</h2>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            // Chaining (Koppla flera metoder till samma jQuery-objekt)
+            $('h1').hide().show(1000);
+
+            // Utan chaining (OBS! långsammare operation)
+            $('h2').hide();
+            $('h2').show(2000);
+
+        }); // Ready
+    </script>
+</body>
+</html>

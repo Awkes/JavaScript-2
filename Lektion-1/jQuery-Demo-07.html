@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Demo 7</title>
+</head>
+<body>
+    <h1>jQuery Demo 7</h1>
+    <h2 style="color: hotpink;">Arbeta med attribut</h2>
+
+    <a href="https://webacademy.se">Web Academy</a>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            
+            /* Metoden attr() */
+            const $a = $('a');
+            
+            // Hämta attributet href's värde
+            console.log($a.attr('href'))
+            
+            // Ändra värde
+            $a.attr('href', 'http://www.nackademin.se');
+
+            // Lägg till värde
+            $a.attr('target', '_blank');
+
+            /* removeAttr() */
+            // Ta bort attribut
+            $('h2').removeAttr('style');
+
+        }); // Ready
+    </script>
+</body>
+</html>
