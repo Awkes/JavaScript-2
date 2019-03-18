@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Övning - Inköpslista med jQuery</title>
+</head>
+<body>
+    <h1>Inköpslista</h1>
+    <input type="text" id="new-item" autofocus>
+    <button id="add-item">Lägg till</button>
+    <ul id="shopping-list"></ul>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            // Hämta referenser
+            $addItem = $('#add-item');
+            $newItem = $('#new-item');
+            $shoppingList = $('#shopping-list');
+
+            // Lägg till objekt
+            $addItem.click(function() {
+                if ($newItem.val().length > 0) {
+                    $shoppingList.append('<li>'+$newItem.val()+'</li>'); // Lägg till objekt
+                    $newItem.val(''); // Rensa fält
+                    $newItem.focus(); // Focus på fält
+                }
+                else { alert('Inmatningsfältet får inte vara tomt!'); }
+            });
+        });
+    
+    </script>
+</body>
+</html>
