@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery - Demo 3</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    #demo1 { display: none; }
+    .demo2 { display: none; }
+  </style>
+</head>
+
+<body class="container">
+
+  <h1>Arbeta med effekter i jQuery</h1>
+
+  <h2>Show och Hide</h2>
+  <button id="show" class="btn btn-outline-info">Visa</button>
+  <button id="hide" class="btn btn-outline-info">Dölj</button>
+  <div id="demo1">
+    <img src="https://picsum.photos/200/300/?random" alt="Bild">
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed obcaecati labore vel aliquid quo quidem ea, laboriosam consequatur facere commodi voluptates similique unde fuga iusto quasi suscipit, expedita modi natus ut sit libero esse ab nesciunt. Tempore facere iusto quaerat!</p>
+  </div>
+
+  <h2>Toggle</h2>
+  <button id="demo2" class="btn btn-outline-primary">Visa</button>
+  <div class="demo2">
+      <img src="https://picsum.photos/200/300/?random" alt="Bild">
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed obcaecati labore vel aliquid quo quidem ea, laboriosam consequatur facere commodi voluptates similique unde fuga iusto quasi suscipit, expedita modi natus ut sit libero esse ab nesciunt. Tempore facere iusto quaerat!</p>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $('document').ready(function(){
+
+      // Visa innehåll
+      $('#show').click(function(){
+        $('#demo1').show(300);
+      });
+
+      // Dölj innehåll
+      $('#hide').click(function(){
+        $('#demo1').hide(300);
+      });
+
+      // toggle
+      $('#demo2').click(function(){
+        $('.demo2').toggle(300);
+        
+        $(this).text(function(i,text){
+          return text === 'Visa' ? 'Dölj' : 'Visa';
+        });
+      });
+
+
+    }); // ready
+  </script>
+</body>
+
+</html>
