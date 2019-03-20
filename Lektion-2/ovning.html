@@ -68,6 +68,7 @@
             $(this).parentsUntil('table').toggleClass('strike');
           });
 
+          // Ta bort rad vid klick på ta bort
           $shoppingList.find('button').click(function(){
             $(this).parentsUntil('table').remove();
           });
