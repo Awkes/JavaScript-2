@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery - Demo 2</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body class="container">
+
+  <h1>Arbeta med events i jQuery</h1>
+
+  <h2 id="demo1">Klicka här för att ta bort mig</h2>
+  <h2 id="demo2">Dubbelklicka här för att ta bort mig</h2>
+  <h2 id="demo3">Mouseenter och Mouseout</h2>
+  <h2 id="demo4">Mousedown och Mouseup</h2>
+  <h2 id="demo5">Hover</h2>
+
+  <h2>Focus och blur</h2>
+  <form id="demo6">
+    Namn    <input type="text">
+    E-post  <input type="email">
+  </form>
+
+  <h2 id="demo7">Arbeta med metoden on</h2>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+
+    $(document).ready(function () {
+
+      // click
+      $('#demo1').click(function() {
+        $(this).hide();
+      });
+
+      // dblclick
+      $('#demo2').dblclick(function() {
+        $(this).hide();
+      });
+
+      // mouseenter
+      $('#demo3').mouseenter(function() {
+        $(this).html('Demo på mouseenter');
+      });
+
+      // mouseout
+      $('#demo3').mouseout(function() {
+        $(this).html('Demo på mouseout');
+      });
+
+      // mousedown
+      $('#demo4').mousedown(function() {
+        $(this).html('Demo på mousedown');
+      });
+
+      // mousedown
+      $('#demo4').mouseup(function() {
+        $(this).html('Demo på mouseup');
+      });
+
+      // hover
+      /*
+      $('#demo5').hover(inFun,outFun);
+      function inFun() { $(this).css('background-color','hotpink'); }
+      function outFun() { $(this).css('background-color','initial'); }
+      */
+      // hover, alternativ syntax
+      $('#demo5').hover(
+        function() { $(this).css('background-color','hotpink'); },
+        function () { $(this).css('background-color','initial'); }
+      );
+
+      // focus och blur
+      $('input').focus(function(){
+        $(this).css('background-color','gold');
+      });
+
+      $('input').blur(function(){
+        $(this).css('background-color','initial');
+      });
+
+      // Metoden on
+      $('#demo7')
+        .on('click', function() {
+          $(this).html('click har aktiverats')
+        })
+        .on('dblclick', function() {
+          $(this).html('dblclick har aktiverats')
+        });
+
+    }); // ready
+
+  </script>
+</body>
+
+</html>
