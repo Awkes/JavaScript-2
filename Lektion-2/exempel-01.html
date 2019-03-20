@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Exempel 1 - Formulärvalidering</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+      .message  { 
+        color:red;
+        display: none;
+      }
+  </style>
+</head>
+
+<body class="container">
+  <h1>Exempel 1 - Formulärvalidering</h1>
+  <form action="#">
+    <div>
+      <label for="user"><b>Username</b></label> <br>
+      <input id="name" type="text" required class=""> <br>
+      <small class="message">The username must be at least 3 characters.</small>
+    </div>
+    <div>
+      <label for="pass"><b>Password </b></label> <br>
+      <input id="pass" type="password" required> <br>
+      <small class="message">The password must be at least 3 characters.</small>
+    </div>
+    <input type="submit" value="Login" class="btn btn-dark">
+  </form>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+     
+      $('input[required]').keyup(function(){          // 1. Välj inputfält som har attributet required
+        $(this).val().length < 3                      // 2. Vid keyup testa om fältet innehåller minst 3 tecken
+          ? $(this).siblings('.message').show(500)    // 3. Visa meddelandet som ligger efter det aktuella fältet
+          : $(this).siblings('.message').hide(500);   // 4. Dölj meddelandet om fältet innehåller minst 3 tecken 
+      });
+
+    });
+  </script>
+</body>
+
+</html>
