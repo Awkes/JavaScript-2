@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery UI - Checkbox Radio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- jQuery UI -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css">
+</head>
+
+<body>
+  <h1>jQuery UI - Checkbox Radio</h1>
+
+  <h2>Radio Group</h2>
+  <fieldset>
+    <legend>Välj glass: </legend>
+    <label for="radio-1">Calippo</label>
+    <input type="radio" name="radio-1" id="radio-1">
+    <label for="radio-2">Piggelin</label>
+    <input type="radio" name="radio-1" id="radio-2">
+    <label for="radio-3">Sandwich</label>
+    <input type="radio" name="radio-1" id="radio-3">
+  </fieldset>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- jQuery UI -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <!-- Egen JS kod -->
+  <script>
+    $(function () { // $(document).ready() shortcut syntax
+      $('input').checkboxradio();
+    }); // ready
+  </script>
+</body>
+
+</html>
