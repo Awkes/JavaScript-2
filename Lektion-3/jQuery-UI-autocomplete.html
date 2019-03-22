@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery UI - Autocomplete</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- jQuery UI -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+</head>
+
+<body>
+  <h1>jQuery UI - Autocomplete</h1>
+
+  <div class="ui-widget">
+    <label for="tags">Tags: </label>
+    <input id="tags">
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- jQuery UI -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <!-- Egen JS kod -->
+  <script>
+    $(function () { // $(document).ready() shortcut syntax
+      let tags = [
+        'Apa',
+        'Elefant',
+        'Get',
+        'Giraff',
+        'Gris',
+        'Gädda',
+        'Häst',
+        'Ko',
+        'Koala',
+        'Känguru',
+        'Lejon',
+        'Mört',
+        'Panda',
+        'Tiger',
+        'Zebra'
+      ];
+
+      $('#tags').autocomplete({ source : tags });
+
+    }); // ready
+  </script>
+</body>
+
+</html>

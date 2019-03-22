@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery UI - Dialogs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- jQuery UI -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <style>
+    #dialog { display: none; }
+  </style>
+</head>
+
+<body>
+  <h1>jQuery UI - Dialogs</h1>
+
+  <button>Visa dialogruta</button>
+
+  <div id="dialog" title="Basic dialog">
+    <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized
+      and closed with the 'x' icon.</p>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- jQuery UI -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <!-- Egen JS kod -->
+  <script>
+    $(function () { // $(document).ready() shortcut syntax
+      $('button').click(function() { $('#dialog').dialog(); });
+      
+    }); // ready
+  </script>
+</body>
+
+</html>
