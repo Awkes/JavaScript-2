@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Intro</title>
+</head>
+
+<body>
+  <h1>API Introduktion</h1>
+  <h2>Visa slumpmässigt namn från NamnAPI.se</h2>
+  <button id="loadBtn">Visa namn</button>
+  <div id="demo"></div>
+
+  <h2>Övning 1 - Visa 10 namn</h2>
+  <button id="loadBtn1">Visa 10 namn</button>
+  <div id="demo1"></div>
+  
+  <h2>Övning 2 - Visa valfritt antal namn</h2>
+  <select id="antal2">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+  <button id="loadBtn2">Visa namn</button>
+  <div id="demo2"></div>
+
+  </button>
+
+  <script>
+    // Load funktion
+    function load(url, callback) {
+      let xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200)
+          callback(this);
+      }
+      xhr.open('GET', url, true);
+      xhr.send();
+    }
+
+    // Visa ett namn
+    document.querySelector('#loadBtn').addEventListener('click', () => {
+      // cors.io är en proxy som tillåter att man hämtar data från andra källor
+      const url = 'https://cors.io/?http://api.namnapi.se/v2/names.json?limit=1';
+      load(url,demo);
+    });
+
+    function demo(xhr) {
+      let json = JSON.parse(xhr.responseText);
+      let array = json.names;
+      let name = array[0];
+      console.log(name);
+      document.querySelector('#demo').innerText = name.firstname + ' ' + name.surname;
+    }
+
+    // Visa 10 namn
+    document.querySelector('#loadBtn1').addEventListener('click', () => {
+      // cors.io är en proxy som tillåter att man hämtar data från andra källor
+      const url = 'https://cors.io/?http://api.namnapi.se/v2/names.json?limit=10';
+      load(url,demo1);
+    });
+
+    function demo1(xhr) {
+      let json = JSON.parse(xhr.responseText);
+      let array = json.names;
+      let names = '';
+      array.forEach(name => {
+        names += name.firstname + ' ' + name.surname + '<br>';
+      });
+      document.querySelector('#demo1').innerHTML = names;
+    }
+
+    // Visa valfritt antal namn
+    const select = document.querySelector('#antal2');
+
+    document.querySelector('#loadBtn2').addEventListener('click', () => {
+      // cors.io är en proxy som tillåter att man hämtar data från andra källor
+      const url = 'https://cors.io/?http://api.namnapi.se/v2/names.json?limit='+select.value;;
+      load(url,demo2);
+    });
+
+    function demo2(xhr) {
+      let json = JSON.parse(xhr.responseText);
+      let array = json.names;
+      let names = '';
+      array.forEach(name => {
+        names += name.firstname + ' ' + name.surname + '<br>';
+      });
+      document.querySelector('#demo2').innerHTML = names;
+    }
+  </script>
+
+</body>
+
+</html>

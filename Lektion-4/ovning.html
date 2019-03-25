@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Övning - Skapa tabell från XML-fil</title>
+  <style>
+    table { border-collapse: collapse; }
+    td,th {
+      border: 1px solid #000;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Övning - Skapa tabell från XML-fil</h1>
+  <table></table>
+
+  <script>
+    // Hämta fil
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+      // Skriv ut innehållet i tabellen när filen är hämtad
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        const xml = xhr.responseXML;
+        const cds = xml.querySelectorAll('CD');
+        let list = '<tr><th>Artist</th><th>Title</th></tr>';
+        cds.forEach(cd => {
+          list += `
+            <tr>
+              <td>${cd.querySelector('ARTIST').textContent}</td>
+              <td>${cd.querySelector('TITLE').textContent}</td>
+            </tr>
+          `;
+        });
+        document.querySelector('table').innerHTML = list;       
+      }
+    }
+    xhr.open('GET','demo.xml',true);
+    xhr.send();
+
+  </script>
+  
+</body>
+</html>
