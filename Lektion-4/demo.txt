@@ -1,0 +1,4 @@
+Demotext i filen demo.txt
+Mer text
+
+Trallalalala
