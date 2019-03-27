@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch - Övningar</title>
+  <style>
+    ul { list-style-type: none; }
+    table,td { border: 1px solid #000; border-collapse: collapse; }
+
+    #label-users {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      width: 70vw;
+      gap: 10px;
+    }
+    .label-user { 
+      border: 1px solid #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Fetch / JSONPlaceholder - Övningar</a></h1>
+  
+  <h2>Övning 1 - Lista över alla användare</h2>
+  <ul id="all-users"></ul>
+  
+  <h2>Övning 2 - Tabell med alla användare och deras e-post</h2>
+  <table id="table-users"></table>
+  
+  <h2>Övning 3 - Adressetiketter</h2>
+  <div id="label-users"></div>>
+  
+  <script>
+    // Övning 1 - Skriv ut lista över alla användare
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        let list = '';
+        data.forEach(usr => list += '<li>'+usr.name+'</li>');
+        document.querySelector('#all-users').innerHTML = list;
+      });
+      
+      // Övning 2 - Skriv ut användare och e-post
+      fetch('https://jsonplaceholder.typicode.com/users')
+        .then(res => res.json())
+        .then(data => {
+          let table = '';
+          data.forEach(usr => table += `
+              <tr>
+                <td>${usr.name}</td>
+                <td>${usr.email}</td>
+              </tr>
+            `);
+          document.querySelector('#table-users').innerHTML = table;
+        });
+      
+      
+      // Övning 3 - Skriv ut adressetiketter
+      fetch('https://jsonplaceholder.typicode.com/users')
+        .then(res => res.json())
+        .then(data => {
+          let labels = '';
+          data.forEach(usr => labels += `
+              <div class="label-user">
+                <h3>${usr.name}</h3>
+                <p>
+                  ${usr.address.street}<br>
+                  ${usr.address.suite}<br>
+                  ${usr.address.zipcode}<br>
+                  ${usr.address.city}
+                </p>
+              </div>
+            `);
+          document.querySelector('#label-users').innerHTML = labels;
+        });
+      
+      
+  </script>
+</body>
+
+</html>

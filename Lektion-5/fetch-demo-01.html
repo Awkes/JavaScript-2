@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch - Demo 1</title>
+  <style>
+    </style>
+</head>
+
+<body>
+  <h1>Fetch - Demo 1</a></h1>
+  
+  <script>
+    // Fetch intro
+    fetch('demo.json')
+      .then(res  => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
+    ;
+
+    // Hämta alla användare från JSONPlaceholder
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(data => console.log(data))
+    ;
+
+  </script>
+</body>
+
+</html>

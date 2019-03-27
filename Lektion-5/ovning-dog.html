@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breed List</title>
+  <style>
+    body {
+      text-align: center;
+    }
+    form {
+      background-color: #CCC;
+      padding: 10px;
+    }
+    img { 
+      margin: 0 auto;
+      max-width: 50vw; 
+      max-height: 50vh; 
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Breed List</h1>
+  <form action="">
+      https://dog.ceo/api/breed/ <select id="breed"></select> /images/random
+    <button type="submit">Fetch</button>
+  </form>
+  <img id="dog" src="" alt="Vovve" style="display:none">
+
+  <script>
+    // Selectors och eventlisteners
+    const form = document.querySelector('form');
+    const breed = document.querySelector('#breed');
+    const img = document.querySelector('#dog');
+    form.addEventListener('submit',getImage);
+    
+    // Hämta hundraser till select
+    const breeds = fetch('https://dog.ceo/api/breeds/list/all')
+      .then(res => res.json())
+      .then(data => {
+        let breeds = '';
+        for (let breed in data.message) {
+          breeds += '<option value="' + breed + '">' + breed + '</option>';
+        }
+        breed.innerHTML = breeds;
+      });
+
+    // Hämta random bild
+    function getImage(e) {
+      e.preventDefault();
+      fetch('https://dog.ceo/api/breed/'+breed.value+'/images/random')
+        .then(res => res.json())
+        .then(data => {
+          img.setAttribute('src', data.message)
+          img.setAttribute('style', 'display: block')
+        });     
+    }
+  </script>
+</body>
+
+</html>

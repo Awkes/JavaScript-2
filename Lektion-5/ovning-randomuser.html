@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random user from randomuser.me</title>
+  <style>
+    body {
+      width: 50%;
+      margin: 0 auto;
+      text-align: center;
+      background-color: purple;
+      text-shadow: 0 0 5px #000;
+    }
+    a { color: hotpink; }
+
+    #person {
+      margin: 0 auto;
+      text-align: left;
+      text-shadow: none;
+      color: #000;
+      padding: 20px;
+      background-color: #fff;
+      border: 3px solid hotpink;
+      width: fit-content;
+      text-transform: capitalize;
+      box-shadow: 0 0 5px #000;
+      border-radius: 10px;
+    }
+
+    img { 
+      width: 100%; 
+      border: 2px solid hotpink;
+    }
+
+    button { 
+      background-color: purple;
+      color: #fff;
+      border: 3px solid hotpink;
+      padding: 10px;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    p { padding-left: 10px; }
+
+  </style>
+</head>
+
+<body>
+  <h1><a href="#">Random user from randomuser.me</a></h1>
+  <div id="person" style="display:none;">
+    <img src="" alt="">
+    <h2></h2>
+    <p id="age"></p>
+    <p id="city"></p>
+    <button>Contact me</button>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Egen kod -->
+  <script>
+    $(document).ready(function () {
+      $('h1 > a').click(getUser);
+
+      function getUser() {
+        $.getJSON('https://randomuser.me/api/', data => {
+          const usr = data.results[0];
+
+          $('img').attr('src',usr.picture.large)
+          $('h2').text(usr.name.first +' '+ usr.name.last)
+          $('#age').text('Age: '+usr.dob.age)
+          $('#city').text('City: '+usr.location.city)
+          $('button').click(() => {
+            location.href = 'mailto:'+usr.email;
+          });
+
+          $('#person').hide().fadeIn(1000);
+        });
+      }
+
+      getUser();
+
+
+    }); // ready
+
+  </script>
+</body>
+
+</html>
