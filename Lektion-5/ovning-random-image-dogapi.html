@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random image from Dog API</title>
+  <style>
+    body {
+      text-align: center; 
+      color: hotpink;   
+      background-color: purple;
+      text-shadow: 0 0 5px #000;
+    }
+    img { 
+      max-width: 70vw; 
+      max-height: 70vh; 
+      border-radius: 10px;  
+      border: 3px solid hotpink;
+      box-shadow: 0 0 5px #000;
+    }
+    #new-image { cursor: pointer; }
+
+  </style>
+</head>
+
+<body>
+  <h1 id="new-image">Random image from Dog API</h1>
+  <img src="" alt="Vovve">
+  
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Egen kod -->
+  <script>
+    $(document).ready(function(){
+
+      $('#new-image').click(loadDog); // Ladda ny hund vid klick på rubrik
+      
+      // Funktion som hämtar en random hund från Dog API och skriver ut den på sidan
+      function loadDog() {
+        $.getJSON('https://dog.ceo/api/breeds/image/random', img => {
+          $('img').attr('src', img.message);
+        });
+      }
+
+      loadDog(); // Initiera funktionen
+      
+
+    }); // ready
+  
+  </script>
+</body>
+
+</html>

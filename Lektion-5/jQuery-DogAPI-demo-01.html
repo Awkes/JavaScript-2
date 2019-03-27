@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery - Dog API - Demo 1</title>
+</head>
+
+<body>
+  <h1>jQuery - Dog API - Demo 1</h1>
+  <h2>Hämta en lista över alla hundraser från Dog API</h2>
+  <a href="https://dog.ceo/dog-api">https://dog.ceo/dog-api</a>
+  <ul id="breeds">
+
+  </ul>
+  
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Egen kod -->
+  <script>
+    $(document).ready(function(){
+      
+      $.getJSON('https://dog.ceo/api/breeds/list/all', res => {
+        let breeds = '';
+        
+        // Hämta raser från res.message
+        $.each(res.message,(obj, val) => {
+          // Om delraser finns -> lägg till delraser
+          let subBreeds = '';
+          if (val.length > 0) {
+            subBreeds = '<ul>';
+            $.each(val,(sub) => subBreeds += '<li>'+val[sub]+'</li>');
+            subBreeds += '</ul>'
+          }
+          
+          // Uppdatera msg med ras + eventuella delraser
+          breeds += '<li>'+obj+subBreeds+'</li>';
+        });
+        
+        // Uppdatera listan
+        $('#breeds').html(breeds);
+      });
+      
+
+    }); // ready
+  
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery - AJAX - Demo 1</title>
+</head>
+
+<body>
+  <h1>jQuery - AJAX - Demo 1</h1>
+  <p id="demo"></p>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Egen kod -->
+  <script>
+    $(document).ready(function(){
+      
+      $('#demo').load('demo.txt',(response,status,xhr) => {
+        console.log(response);
+        console.log(status);
+        console.log(xhr);
+      });
+
+    }); // ready
+  
+  </script>
+</body>
+
+</html>

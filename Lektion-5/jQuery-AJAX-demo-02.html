@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery - AJAX - Demo 2</title>
+</head>
+
+<body>
+  <h1>jQuery - AJAX - Demo 2</h1>
+  <h2>Hämta en JSON-sträng</h2>
+  <p id="demo1"></p>
+
+  <h2>Hämta data från ett JSON-objekt</h2>
+  <p id="demo2"></p>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Egen kod -->
+  <script>
+    $(document).ready(function(){
+      
+      $('#demo1').load('demo.json', res => { console.log(res) });
+
+      $.getJSON('demo.json', response => {
+        console.log(response);
+        $('#demo2').html('Namn: <b>'+ response.name +'</b><br>Tfn: <b>'+ response.phone +'</b>');
+      });
+      
+
+    }); // ready
+  
+  </script>
+</body>
+
+</html>

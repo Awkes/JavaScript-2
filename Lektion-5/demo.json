@@ -1,0 +1,12 @@
+{
+  "id": 1,
+  "name": "Andreas Åkerlöf",
+  "username": "andreas",
+  "email": "andreas@email.com",
+  "phone": "070-1234567",
+  "company": {
+    "name": "Företag AB",
+    "address": "Gatan 13, 130 13 Staden",
+    "website": "http://www.akerlof.se"
+  }
+}
