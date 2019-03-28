@@ -37,7 +37,7 @@
     form.addEventListener('submit',getImage);
     
     // Hämta hundraser till select
-    const breeds = fetch('https://dog.ceo/api/breeds/list/all')
+    fetch('https://dog.ceo/api/breeds/list/all')
       .then(res => res.json())
       .then(data => {
         let breeds = '';
