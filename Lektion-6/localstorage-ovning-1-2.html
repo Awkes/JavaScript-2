@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>localStorage - Övning 1 + 2</title>
+</head>
+<body>
+  <h1>localStorage</h1>
+  
+  <h2>Övning 1</h2>
+  <h3>Ange ditt namn</h3>
+  <input id="name-input">
+  <button id="name-btn">Spara</button>
+  <p id="name-res"></p>
+  
+  <h2>Övning 2</h2>
+  <h3>Ange ditt favoritspråk</h3>
+  <input id="lang-input">
+  <button id="lang-btn">Läggtill</button>
+  <ul id="lang-res"></ul>
+  
+  <script>
+    // Övning 1
+    const nameBtn = document.querySelector('#name-btn');
+    const nameInput = document.querySelector('#name-input');
+    const nameRes = document.querySelector('#name-res');
+    nameBtn.addEventListener('click',()=> {
+      if (nameInput !== '') {
+        localStorage.setItem('nameRes',nameInput.value);
+        printName();
+      }
+    });
+    if (localStorage.getItem('nameRes')) printName();
+    
+    function printName() { nameRes.innerText = 'Välkommen '+localStorage.getItem('nameRes'); }
+   
+    // Övning 2
+    const langBtn = document.querySelector('#lang-btn');
+    const langInput = document.querySelector('#lang-input');
+    const langRes = document.querySelector('#lang-res');
+    // Hämta värde från localStorage om det finns, annars skapa en tom array
+    let langArray = localStorage.getItem('langArray') ? JSON.parse(localStorage.getItem('langArray')) : [];
+    // Uppdatera array och localstorage
+    langBtn.addEventListener('click',()=> {
+      if (langInput !== '') {
+        langArray.push(langInput.value);
+        localStorage.setItem('langArray',JSON.stringify(langArray));
+        printLang(langArray);
+      }
+    });
+
+    printLang(langArray);
+
+    function printLang(langArray) { 
+      let list = '';
+      langArray.forEach(lang => { list += '<li>'+lang+'</li>'; });
+      langRes.innerHTML = list;
+    }
+    
+
+  </script>
+</body>
+</html>

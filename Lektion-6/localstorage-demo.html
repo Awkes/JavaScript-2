@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>localStorage - Demo</title>
+  <style>
+    table { border-collapse: collapse; }
+    td { border: 1px solid #000; }
+  </style>
+</head>
+<body>
+  <h1>localStorage - Demo</h1>
+  <p id="name"></p>
+
+  <h2>Visa lista med alla värden från localStorage</h2>
+  <ol id="list"></ol>
+
+  <h2>Visa tabell med alla nycklar och värden från localStorage</h2>
+  <table id="table"></table>
+
+  <script>
+    // Lagra data i localStorage
+    localStorage.setItem('name','Andreas');
+    localStorage.setItem('age','35');
+    localStorage.setItem('mobile','070-1234567');
+    localStorage.setItem('email','andreas@epost.se');
+
+    // Hämta data från localStorage
+    const name = localStorage.getItem('name');
+    console.log(name);
+    document.querySelector('#name').innerHTML = name;
+
+    // Hämta alla nycklar
+    for(let i=0; i<localStorage.length; i++) {
+      console.log('Key: ' + localStorage.key(i));
+    }
+  
+    // Övningar
+    // Innehållsvariabler
+    let list = '';
+    let table = '';
+    // Hämta värden
+    for (let i=0; i<localStorage.length; i++) {
+      list += '<li>'+localStorage.getItem(localStorage.key(i))+'</li>'; // Lägg till i listvariabeln
+      table += '<tr><td>'+localStorage.key(i)+'</td><td>'+localStorage.getItem(localStorage.key(i))+'</td></tr>'; // Lägg till i tablevariablen
+    }
+    // Uppdatera lista och tabell
+    document.querySelector('#list').innerHTML = list;
+    document.querySelector('#table').innerHTML = table;
+
+    // Ta bort data från localStorage
+    localStorage.removeItem('age');
+    console.table(localStorage);
+
+    // Rensa allt som finns i localStorage
+    localStorage.clear();
+    console.table(localStorage);
+
+    // Spara en array i localStorage
+    let myArray = ['a','b','c'];
+    // Skicka array till localStorage (Konvertera till JSON-sträng)
+    localStorage.setItem('myArray',JSON.stringify(myArray));
+    console.table(localStorage);
+    
+    // Hämta array från LS
+    myArray = localStorage.getItem('myArray');
+    // Konvertera tillbaka från JSON -> Array
+    console.log(JSON.parse(myArray));
+
+    // Spara objekt
+    let myObj = {
+      first : 1,
+      second: 'B',
+      third: 'C'
+    }
+    localStorage.setItem('myObj',JSON.stringify(myObj));
+    console.table(localStorage)
+    // Hämta objekt
+    myObj = JSON.parse(localStorage.getItem('myObj'));
+    console.log(myObj);
+    
+</script>
+  
+</body>
+</html>

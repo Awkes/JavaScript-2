@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Modernizr - Demo</title>
+</head>
+<body>
+  <h1>Modernizr - Demo</h1>
+  <ul>
+
+  </ul>
+
+  <!-- Modernizr -->
+  <script src="modernizr-geo.js"></script>
+  <!-- Egen kod -->
+  <script>
+    // Testa om webbläsaren har stöd för geolocation
+    if(Modernizr.geolocation)
+      console.log('Du har stöd för geolocation i din webbläsare');
+    else
+      console.log('Gå hem! Du har inte stöd för geolocation.');
+
+    // Samma kod vanilla
+    if (navigator.geolocation)
+      console.log('Du har stöd för geo...');
+    else 
+      console.log('Gå hem...');
+  </script>
+</body>
+</html>
