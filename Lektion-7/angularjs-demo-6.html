@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+  <title>AngularJS - Demo 6</title>
+</head>
+<body>
+  <h1>AngularJS - Demo 6</h1>
+  
+  <h2>ng-init - Exempel 4</h2>
+  <h3>Skapa en array</h3>
+  <div ng-app>
+    <!-- Skapa en array med ng-init-->   
+    <div ng-init="months=['Jan','Feb','Mar','Apr']">
+      <!-- Iterera över en array med ng-repeat -->
+      <div ng-repeat="month in months">
+        {{month}}
+      </div>
+
+      <h2>Visa en HTML-lista över alla månader</h2>
+      <ul>
+        <li ng-repeat="month in months">{{month}}</li>
+      </ul>
+
+      <h2>Visa en HTML-tabell över alla månader</h2>
+      <table style="border: 1px solid #000; border-collapse: collapse;">
+        <tr ng-repeat="month in months">
+          <td style="border: 1px solid #000;">{{month}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script> 
+  <script>
+  
+  </script>
+</body>
+</html>

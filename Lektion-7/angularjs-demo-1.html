@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+  <title>AngularJS - Demo 1</title>
+</head>
+<body>
+  <h1>AngularJS - Demo 1</h1>
+  
+  <h2>Hello AngularJS</h2>
+  <div ng-app>
+    <label>Namn:</label>
+    <!-- 
+      Model: En modell som heter yourName
+      Modellen tar hand om data (model = data)
+    -->
+    <input type="text" placeholder="Skriv ditt namn här" ng-model="yourName">
+    <!-- View: En vy som visar resultatet på skärmen-->
+    <h3>Hello {{ yourName }}</h>
+  </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script> 
+  <script>
+  
+  </script>
+</body>
+</html>

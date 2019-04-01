@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+  <title>AngularJS - Inköpslista</title>
+</head>
+<body ng-app="shoppingList">
+  <div ng-controller="list">
+    <h1>Angular JS - Inköpslista</h1>
+    <table style="width: 30vw;">
+      <tr ng-repeat="item in items">
+        <td>{{item}}</td>
+        <td>
+          <button ng-click="del($index)">x</button>
+        </td>
+      </tr>
+    </table>
+    <input type="text" ng-model="addItem">
+    <button ng-click="add(addItem)">Lägg till</button>
+    <div style="color: #f00">{{err}}</div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script> 
+  <script>
+    const shoppingList = angular.module('shoppingList',[]);
+    shoppingList.controller('list',function($scope) {
+        $scope.items = [];
+
+        $scope.add = function (item) {
+          if (!item) return;
+          if ($scope.items.indexOf(item) !== -1) 
+            $scope.err = 'Du har redan '+item+' i inköpslistan.';
+          else {
+            $scope.items.push(item);
+            $scope.addItem = '';
+            $scope.err = '';
+          }
+        }
+        $scope.del = function (item) {
+          $scope.items.splice(item,1);
+        }
+    });
+  </script>
+</body>
+</html>
