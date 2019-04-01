@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+  <title>AngularJS - Demo 3</title>
+</head>
+<body>
+  <h1>AngularJS - Demo 3</h1>
+  
+  <h2>ng-init - Exempel 1</h2>
+  <h3>Skapa primitiva variabler</h3>
+  <div ng-app>
+    <!-- Skapa variabler med ng-init-->
+    <div ng-init="moms=0.25">
+      <p>Pris exkl. moms: 100kr</p>
+      <p>Pris inkl. moms: {{100 * (1+moms)}}kr</p>
+    </div>
+  </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script> 
+  <script>
+  
+  </script>
+</body>
+</html>
