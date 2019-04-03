@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Scope</title>
+</head>
+<body>
+  <h1>JavaScript - Scope</h1>
+  
+  <script>
+    // The global scope
+    var andreas = 'Andreas';  // Läggs till i objektet window
+    let erika = 'Erika';      // Läggs till i Script-Scope
+
+    console.log(andreas,'Globalt');
+    console.log(erika,'Globalt');
+
+    function demo() {
+      // Funktion
+      console.log(andreas,'inne i funktionen');
+      console.log(erika,'inne i funktionen');
+      console.log(window.andreas);
+      console.log(window.erika);
+
+      function inne() {
+        console.log(andreas);
+        console.log(erika);
+      }
+
+      inne();
+
+      // Lokala variabler (function scope)
+      console.log('\nLokala Variabler\n');
+  
+      let namn = "Namn är en lokal variabler i funktionen demo";
+      console.log(namn);
+
+      // OBS!
+      akerlof = "Åkerlöf";
+      console.log(akerlof,'inne i demo');
+
+    }
+
+    demo();
+
+    console.log(akerlof,'i global');
+
+    // Block scope (Fr.o.m. ES6 - 2015)
+    console.log('\nBLOCK SCOPE\n...........\n')
+    {
+      let mahmud = "Vad som helst";
+      console.log(mahmud);
+      // mahmud endast tillgänglig i blocket
+    }
+    
+    // console.log(mahmud); // global visar error, mahmud finns inte
+  </script>
+</body>
+</html>
