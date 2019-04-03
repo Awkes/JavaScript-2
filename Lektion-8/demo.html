@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // Lösning 3: Arrow-function - this hänvisar alltid till objektet
+    demo3 = () => console.log(this);
+
+    // Övning
+    /* this i en metod som inte tillhör objektet pekar på window, ex en callback */
+    let course = {
+      title: 'JavaScript',
+      students : ['Andreas','Kalle','Kurt'],
+      info: function() {
+        // Skriver ut
+        // Student läser undefined
+        this.students.forEach(function (s) {
+          // En ny funktion (callback) som inte tillhör objektet course, därför pekar this på window
+          console.log(s + ' läser ' + this.title);
+        });
+        // Lösning 1: fat-arrow-function
+        this.students.forEach(s => console.log(s+' läser '+this.title));
+        // Lösning 2: This, that eller self, skapa ref till aktuella objektet
+        let that = this;
+        this.students.forEach(function(s) {
+          console.log(s+' läser '+that.title)
+
+        });
+      },
+      print : function () {
+        console.log("Print: ", this);
+      }
+    }
+
+    course.info();
+
+  </script>
+</body>
+</html>
