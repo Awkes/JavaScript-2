@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Arv</title>
+</head>
+<body>
+  <h1>Arv och prototypkedja</h1>
+  
+  <script>
+    // En superklass/basklass som beskriver ett djur
+    function Animal(name) {
+      this.name = name;
+    }
+
+    // Lägg till en metod i prototypen
+    Animal.prototype.eat = function () {
+      return this.name + ' eats.';
+    }
+
+    // Skapa en instans av objektet
+    let myAnimal = new Animal('My animal');
+
+    // Använd metoden eat
+    console.log(myAnimal.eat());
+
+    // En klass som beskriver en kanin
+    function Rabbit(name) {
+      this.name = name;
+    }
+
+    // Ge klassen Rabbit tillgång till klassen Animal's prototyp (Rabbit ärver Animals prototyp)
+    Rabbit.prototype = Object.create(Animal.prototype);
+    Rabbit.prototype.constructor = Rabbit;
+    
+    // Lägg till en metod i kaninens prototyp
+    Rabbit.prototype.jump = function () {
+      return this.name +' jumps.';
+    }
+
+    // Skapa ett objekt av klassen Rabbit
+    let myRabbit = new Rabbit('My rabbit');
+
+    // Använd metoden jump som finns i prototypen Rabben
+    console.log(myRabbit.jump());
+
+    // Använd metoden eat som finns i prototypen Animal
+    console.log(myRabbit.eat());
+
+  </script>
+</body>
+</html>

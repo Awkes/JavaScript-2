@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Övning Prototype Based Class Pattern</title>
+</head>
+<body>
+  <h1>Övning</h1>
+
+  <h2>Punkt 1</h2>
+  x <input id="x1">
+  y <input id="y1">
+  <h2>Punkt 2</h2>
+  x <input id="x2">
+  y <input id="y2">
+  <br><br>
+  <button id="calc">Räkna ut</button>
+  <p id="svar"></p>
+
+  <script>
+    let x1 = document.querySelector('#x1');
+    let y1 = document.querySelector('#y1');
+    let x2 = document.querySelector('#x2');
+    let y2 = document.querySelector('#y2');
+    let btn = document.querySelector('#calc');
+    let svar = document.querySelector('#svar');
+    btn.addEventListener('click',() => {
+      let punkt1 = new Punkt(x1.value,y1.value);
+      let punkt2 = new Punkt(x2.value,y2.value);
+      console.log(punkt1)
+      console.log(punkt2)
+      let result = punkt1.distance(punkt2);
+      svar.innerText = result;
+    });    
+
+    // Konstruktor för punkt
+    function Punkt(x,y) {
+      this._x = x;
+      this._y = y;
+    }
+    
+    // Metod i prototypen
+    Punkt.prototype.distance = function(p) {
+      let x1 = this._x;
+      let y1 = this._y;
+      let x2 = p._x;
+      let y2 = p._y;
+
+      let d = Math.sqrt( Math.pow((x2-x1),2) + Math.pow((y2-y1),2) );
+
+      return d;
+    }
+
+
+  </script>
+</body>
+</html>
