@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JavaScript 2 - Lektion 9</title>
+</head>
+<body>
+  <h1>Functional Class Pattern</h1>
+
+  <script>
+    // Functional class pattern
+    // birthday är en sträng YYYY MM DD
+    function User(name, birthday) {
+      this.sayHi = function() {
+        return 'Hello ' + name + ', age: ' + calcAge();
+      }
+
+      // Privat metod som beräkna ålder
+      function calcAge() {
+        let birthDate = new Date(birthday);
+        return new Date().getFullYear() - birthDate.getFullYear();
+      }
+
+    }
+    
+    // Skapa ett objekt av klassen User
+    let user = new User('Andreas');
+    let user2 = new User('Erika');
+    console.log(user)
+
+    // Privata egenskaper
+    console.log(user.name); // Undefined
+
+    // Publik egenskap
+    user.name = 'Kalle Anka'; // Skapar en helt ny egenskap
+    console.log(user.name);
+
+    // Privata metoder
+    let user3 = new User('Andreas','1983 12 20');
+    // console.log(user3.calcAge()); // TypeError...
+
+    // Publika metoder
+    console.log(user.sayHi());
+    console.log(user2.sayHi());
+    
+    console.log(user3.sayHi());
+
+
+
+  </script>
+
+</body>
+</html>

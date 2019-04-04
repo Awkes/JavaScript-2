@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JavaScript 2 - Lektion 9</title>
+</head>
+<body>
+  <h1>Prototype Based Class Pattern</h1>
+
+  <script>
+    // Prototype Based Class Pattern
+    // Prototypen hanterar data
+    function User(name, birthday) {
+      this._name = name;
+      this._birthday = birthday;
+      
+      // // Privat metod som beräkna ålder
+      // function calcAge() {
+      
+      // }
+
+      // // En factory returnerar publika metoder
+      // return {
+      //   sayHi() {
+        //   },
+        //   sayBye() {
+          //     return 'Bye ' + name + ', age: ' + calcAge();
+          //   }
+          // }
+          
+    }
+    // Lägg till en metod i prototypen User
+    User.prototype.sayHi = function () {
+      return 'Hello ' + this._name + ', age: ' + this._calcAge();
+    }
+
+    // Lägg till en privat metod i prototypen User
+    User.prototype._calcAge = function() {
+      let birthDate = new Date(this._birthday);
+       return new Date().getFullYear() - birthDate.getFullYear();
+    }
+    
+    // Skapa ett objekt av prototypen User
+    let user = new User('Andreas','1983 12 20');
+    
+    console.log(user);
+    console.log(user.sayHi());
+
+    // Arv (Inheritance)
+    // Alla objekt i JS ärver från Object
+    // Object är en basklass (superklass, basprototype)
+    // Vi har tillgång till alla metoder som finns i prototypen Object
+    console.log(user.hasOwnProperty('_name')); // true
+    console.log(user.hasOwnProperty('_age')); // false
+
+  </script>
+
+</body>
+</html>

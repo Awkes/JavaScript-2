@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JavaScript 2 - Lektion 9</title>
+</head>
+<body>
+  <h1>Factory Class Pattern</h1>
+
+  <script>
+    // Factory class pattern
+    function User(name, birthday) {
+
+      // Privat metod som beräkna ålder
+      function calcAge() {
+        let birthDate = new Date(birthday);
+        return new Date().getFullYear() - birthDate.getFullYear();
+      }
+
+      // En factory returnerar publika metoder
+      return {
+        sayHi() {
+          return 'Hello ' + name + ', age: ' + calcAge();
+        },
+        sayBye() {
+          return 'Bye ' + name + ', age: ' + calcAge();
+        }
+      }
+
+    }
+    
+    // Skapa ett objekt av klassen User
+    let user = User('Andreas','1983 12 20');
+    console.log(user);
+    console.log(user.sayHi());
+    console.log(user.sayBye());
+
+  </script>
+
+</body>
+</html>
